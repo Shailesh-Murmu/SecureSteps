@@ -20,6 +20,8 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import Location from './Components/Map';
+import { AuthProvider } from './context/authcontext';
 
 const router = createBrowserRouter([
   {
@@ -37,21 +39,28 @@ const router = createBrowserRouter([
     element: <Det/>,
   },
   {
-    path: "Share Location",
+    path: "Share-Location",
     element: <Loc/>,
   },
   {
-    path: "Log in",
+    path: "Log-in",
     element: <Log/>,
   },
   {
     path: "*",
     element: <App/>,
   },
+  {
+    path:"/maplocation/:id",
+    element:<Location></Location>
+  }
 ]);
 
+
 createRoot(document.getElementById("root")).render(
+  <AuthProvider>
   <RouterProvider router={router} />
+  </AuthProvider>
 );
 
 reportWebVitals();
